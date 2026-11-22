@@ -55,7 +55,7 @@ participantForm.addEventListener("submit",event=>{
     career:String(data.get("career")).trim(),
     mood:Number(data.get("mood"))
   };
-  if(!participant.email.toLowerCase().endsWith("@espol.edu.ec")){
+  if(!/^[A-Z0-9._%+-]+@espol\.edu\.ec$/i.test(participant.email)){
     alert("Ingresa tu correo institucional de ESPOL (@espol.edu.ec).");
     return;
   }
@@ -71,7 +71,7 @@ function renderQuestions(){
       <p>${index+1}. ${question}</p>
       <div class="answers">
         ${[1,2,3,4,5].map(value=>`
-          <label><input type="radio" name="q${index+1}" value="${value}" required><span>${value}</span></label>
+          <label><input type="radio" name="q${index+1}" value="${value}" required><span class="answer-number">${value}</span><small>${["Muy impreciso","Moderadamente impreciso","Neutro","Moderadamente preciso","Muy preciso"][value-1]}</small></label>
         `).join("")}
       </div>
     </section>`).join("");
