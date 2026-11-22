@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cuestionario Mini-IPIP para un proyecto académico de ESPOL.">
+  <title>Mini-IPIP | ESPOL</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand-mark">M</div>
+      <div><strong>Mini-IPIP</strong><span>Proyecto de investigación · ESPOL</span></div>
+    </header>
+
+    <section class="panel intro" id="welcome">
+      <p class="eyebrow">CUESTIONARIO DE PERSONALIDAD</p>
+      <h1>Conócete un poco más</h1>
+      <p class="lead">Este cuestionario contiene 20 afirmaciones sobre diferentes formas de pensar, sentir y actuar. No existen respuestas buenas o malas; responde con sinceridad.</p>
+      <div class="info-row">
+        <span>20 preguntas</span><span>3–5 minutos</span><span>Escala del 1 al 5</span>
+      </div>
+      <button class="primary" id="startButton">Realizar prueba</button>
+      <p class="small-note">Tu participación es voluntaria. Los resultados se utilizarán con fines académicos.</p>
+    </section>
+
+    <form id="participantForm" class="panel hidden">
+      <div class="step-label">ANTES DE EMPEZAR</div>
+      <h2>Datos del participante</h2>
+      <p class="muted">Completa estos datos para registrar tu participación.</p>
+      <label>Nombre completo<input name="fullName" autocomplete="name" required maxlength="120" placeholder="Escribe tus nombres y apellidos"></label>
+      <label>Correo institucional ESPOL<input name="email" type="email" autocomplete="email" required placeholder="usuario@espol.edu.ec"></label>
+      <label>Carrera<input name="career" required maxlength="120" placeholder="Ej. Ingeniería en Computación"></label>
+      <fieldset class="mood-field">
+        <legend>¿Cómo te sientes hoy?</legend>
+        <p class="muted">Selecciona la opción que mejor represente tu estado de ánimo.</p>
+        <div class="mood-options">
+          <label><input type="radio" name="mood" value="1" required><span>1</span><small>Muy mal</small></label>
+          <label><input type="radio" name="mood" value="2"><span>2</span><small>Mal</small></label>
+          <label><input type="radio" name="mood" value="3"><span>3</span><small>Regular</small></label>
+          <label><input type="radio" name="mood" value="4"><span>4</span><small>Bien</small></label>
+          <label><input type="radio" name="mood" value="5"><span>5</span><small>Muy bien</small></label>
+        </div>
+      </fieldset>
+      <button class="primary" type="submit">Continuar al cuestionario</button>
+    </form>
+
+    <form id="quizForm" class="panel hidden">
+      <div class="quiz-heading">
+        <div><div class="step-label">MINI-IPIP · 20 ÍTEMS</div><h2>¿Qué tan de acuerdo estás?</h2></div>
+        <strong id="progressText">0 de 20</strong>
+      </div>
+      <div class="progress-track"><div id="progressBar"></div></div>
+      <p class="muted scale-hint">Indica qué tan precisa es cada afirmación para describirte.</p>
+      <div id="questions"></div>
+      <div class="scale-legend"><span>1 · Muy impreciso</span><span>3 · Neutro</span><span>5 · Muy preciso</span></div>
+      <button class="primary" id="submitQuiz" type="submit" disabled>Ver mis resultados</button>
+    </form>
+
+    <section id="results" class="panel hidden">
+      <p class="eyebrow">CUESTIONARIO COMPLETADO</p>
+      <h2>Resultados</h2>
+      <p class="muted">Estas puntuaciones son orientativas y describen tendencias en las cinco dimensiones evaluadas. No son un diagnóstico.</p>
+      <div id="scoreCards" class="score-grid"></div>
+      <div class="participant-code">Tu código de participante <strong id="participantCode"></strong></div>
+      <p id="saveStatus" class="save-status" role="status">Enviando tus respuestas...</p>
+      <button class="secondary" id="restartButton" type="button">Finalizar</button>
+    </section>
+
+    <footer>ESPOL · Proyecto de investigación académica</footer>
+  </main>
+</body>
+</html>
