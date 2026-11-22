@@ -8,7 +8,7 @@ function doGet(e) {
     if (e.parameter.action !== "checkEmail" || !/^[A-Za-z_$][0-9A-Za-z_$]*$/.test(callback)) {
       throw new Error("Solicitud no válida.");
     }
-    if (!/^[A-Z0-9._%+-]+@espol\\.edu\\.ec$/i.test(email)) {
+    if (!/^[A-Z0-9._%+-]+@espol\.edu\.ec$/i.test(email)) {
       throw new Error("Correo institucional no válido.");
     }
     response = {ok:true, exists:emailExists_(getSheet_(), email)};
@@ -24,7 +24,7 @@ function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
     const email = normalizeEmail_(data.email || "");
-    if (!/^[A-Z0-9._%+-]+@espol\\.edu\\.ec$/i.test(email)) {
+    if (!/^[A-Z0-9._%+-]+@espol\.edu\.ec$/i.test(email)) {
       throw new Error("Correo institucional no válido.");
     }
 
