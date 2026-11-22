@@ -46,71 +46,24 @@ document.querySelector("#startButton").addEventListener("click",()=>{
   window.scrollTo({top:0,behavior:"smooth"});
 });
 
-participantForm.addEventListener("submit",async event=>{
+participantForm.addEventListener("submit",event=>{
   event.preventDefault();
   const data = new FormData(participantForm);
   participant = {
     fullName:String(data.get("fullName")).trim(),
-    email:String(data.get("email")).trim().toLowerCase(),
+    email:String(data.get("email")).trim(),
     career:String(data.get("career")).trim(),
     mood:Number(data.get("mood"))
   };
-  if(!/^[A-Z0-9._%+-]+@/i.test(participant.email) || !participant.email.endsWith("@espol.edu.ec")){
+  if(!/^[A-Z0-9._%+-]+@espol\.edu\.ec$/i.test(participant.email)){
     alert("Ingresa tu correo institucional de ESPOL (@espol.edu.ec).");
     return;
   }
-
-  const continueButton = participantForm.querySelector('button[type="submit"]');
-  continueButton.disabled = true;
-  continueButton.textContent = "Verificando correo...";
-  try {
-    const alreadyRegistered = await checkEmailRegistered(participant.email);
-    if(alreadyRegistered){
-      alert("Este correo institucional ya fue registrado. Cada estudiante puede completar el cuestionario una sola vez.");
-      return;
-    }
-    participantForm.classList.add("hidden");
-    renderQuestions();
-    quizForm.classList.remove("hidden");
-    window.scrollTo({top:0,behavior:"smooth"});
-  } catch(error) {
-    alert("No se pudo verificar el correo. Revisa tu conexión e inténtalo nuevamente.");
-  } finally {
-    continueButton.disabled = false;
-    continueButton.textContent = "Continuar al cuestionario";
-  }
+  participantForm.classList.add("hidden");
+  renderQuestions();
+  quizForm.classList.remove("hidden");
+  window.scrollTo({top:0,behavior:"smooth"});
 });
-
-function checkEmailRegistered(email){
-  return new Promise((resolve,reject)=>{
-    const callbackName = "emailCheck_" + Date.now() + "_" + Math.floor(Math.random()*100000);
-    const script = document.createElement("script");
-    const timeout = setTimeout(()=>{
-      cleanup();
-      reject(new Error("Tiempo de espera agotado"));
-    },10000);
-    function cleanup(){
-      clearTimeout(timeout);
-      delete window[callbackName];
-      script.remove();
-    }
-    window[callbackName] = response=>{
-      cleanup();
-      if(!response || response.ok !== true){
-        reject(new Error("No se pudo verificar el correo"));
-        return;
-      }
-      resolve(response.exists);
-    };
-    script.onerror = ()=>{
-      cleanup();
-      reject(new Error("Error al consultar el registro"));
-    };
-    script.src = GOOGLE_SCRIPT_URL + "?action=checkEmail&email=" +
-      encodeURIComponent(email) + "&callback=" + callbackName;
-    document.body.appendChild(script);
-  });
-}
 
 function renderQuestions(){
   questionsContainer.innerHTML = questions.map((question,index)=>`
