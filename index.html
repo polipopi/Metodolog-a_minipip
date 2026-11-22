@@ -31,7 +31,7 @@
       <h2>Datos del participante</h2>
       <p class="muted">Completa estos datos para registrar tu participación.</p>
       <label>Nombre completo<input name="fullName" autocomplete="name" required maxlength="120" placeholder="Escribe tus nombres y apellidos"></label>
-      <label>Correo institucional ESPOL<input name="email" type="email" autocomplete="email" required placeholder="usuario@espol.edu.ec"></label>
+      <label>Correo institucional ESPOL<input name="email" type="email" autocomplete="email" required maxlength="254" pattern="[A-Za-z0-9._%+-]+@espol\\.edu\\.ec" title="Ingresa un correo institucional que termine en @espol.edu.ec" placeholder="usuario@espol.edu.ec"><small class="field-hint">Solo se permiten correos que terminen en @espol.edu.ec.</small></label>
       <label>Carrera<input name="career" required maxlength="120" placeholder="Ej. Ingeniería en Computación"></label>
       <fieldset class="mood-field">
         <legend>¿Cómo te sientes hoy?</legend>
