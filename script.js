@@ -55,7 +55,7 @@ participantForm.addEventListener("submit",async event=>{
     career:String(data.get("career")).trim(),
     mood:Number(data.get("mood"))
   };
-  if(!/^[A-Z0-9._%+-]+@/.test(participant.email) || !participant.email.endsWith("@espol.edu.ec")){
+  if(!/^[A-Z0-9._%+-]+@/i.test(participant.email) || !participant.email.endsWith("@espol.edu.ec")){
     alert("Ingresa tu correo institucional de ESPOL (@espol.edu.ec).");
     return;
   }
