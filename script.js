@@ -1,5 +1,5 @@
 // Pega aquí la URL de implementación de Google Apps Script cuando configures la hoja.
-const GOOGLE_SCRIPT_URL = "";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzcBxEnzgSVCPTaC3XP6dnr51mfjvL1XgRW5c8Pli_SWGSmMAn8ojp2gOPpXeTTITVhLg/exec";
 
 const questions = [
   "Soy el alma de la fiesta.",
