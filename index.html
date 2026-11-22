@@ -32,7 +32,45 @@
       <p class="muted">Completa estos datos para registrar tu participación.</p>
       <label>Nombre completo<input name="fullName" autocomplete="name" required maxlength="120" placeholder="Escribe tus nombres y apellidos"></label>
       <label>Correo institucional ESPOL<input name="email" type="email" autocomplete="email" required maxlength="254" pattern="[A-Za-z0-9._%+-]+@espol\\.edu\\.ec" title="Ingresa un correo institucional que termine en @espol.edu.ec" placeholder="usuario@espol.edu.ec"><small class="field-hint">Solo se permiten correos que terminen en @espol.edu.ec.</small></label>
-      <label>Carrera<input name="career" required maxlength="120" placeholder="Ej. Ingeniería en Computación"></label>
+      <label>Carrera
+        <select name="career" required>
+          <option value="" selected disabled>Selecciona tu carrera</option>
+          <option>Acuicultura</option>
+          <option>Administración de Empresas</option>
+          <option>Alimentos</option>
+          <option>Animación Digital y Videojuegos</option>
+          <option>Arqueología</option>
+          <option>Auditoría y Control de Gestión</option>
+          <option>Biología</option>
+          <option>Ciencia de Datos e Inteligencia Artificial (Hibrido)</option>
+          <option>Computación</option>
+          <option>Diseño de Productos</option>
+          <option>Diseño Gráfico</option>
+          <option>Economía</option>
+          <option>Electricidad</option>
+          <option>Electrónica y Automatización</option>
+          <option>Estadística</option>
+          <option>Geología</option>
+          <option>Ingeniería Agrícola y Biológica</option>
+          <option>Ingeniería Civil</option>
+          <option>Ingeniería Industrial</option>
+          <option>Ingeniería Naval</option>
+          <option>Ingeniería Química</option>
+          <option>Logistica y Transporte</option>
+          <option>Matemática</option>
+          <option>Materiales</option>
+          <option>Mecánica</option>
+          <option>Mecatrónica</option>
+          <option>Minas</option>
+          <option>Oceanografía</option>
+          <option>Petróleos</option>
+          <option>Producción para Medios de Comunicación</option>
+          <option>Telecomunicaciones</option>
+          <option>Telemática</option>
+          <option>Turismo</option>
+        </select>
+        <small class="field-hint">Selecciona la carrera que estudias actualmente.</small>
+      </label>
       <fieldset class="mood-field">
         <legend>¿Cómo te sientes hoy?</legend>
         <p class="muted">Selecciona la opción que mejor represente tu estado de ánimo.</p>
